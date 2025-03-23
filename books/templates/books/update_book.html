@@ -1,0 +1,81 @@
+{% extends "books/base.html" %}
+
+{% block content %}
+<style>
+    /* Form Container */
+    .update-book-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    /* Form Styling */
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #9900ff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background-color: #9900ff;
+    }
+
+    /* Back Link */
+    .back-link {
+        display: block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #9900ff;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+        .update-book-container {
+            width: 90%;
+        }
+    }
+</style>
+
+<div class="update-book-container">
+    <h2>Update Book</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <a href="{% url 'book_list' %}" class="back-link">Back to Book List</a>
+</div>
+{% endblock %}

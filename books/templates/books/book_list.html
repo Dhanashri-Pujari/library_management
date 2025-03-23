@@ -1,0 +1,16 @@
+{% extends "books/base.html" %}
+
+{% block content %}
+  <h2>Book List</h2>
+  <ul>
+    {% for book in books %}
+      <li>
+        <strong>{{ book.title }}</strong> by {{ book.author }} (Published: {{ book.published_date }})
+        
+        <!-- Update Button -->
+        <a href="{% url 'update_book' book.id %}">Update</a>
+
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
